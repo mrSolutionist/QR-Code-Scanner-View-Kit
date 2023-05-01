@@ -4,19 +4,11 @@ import SwiftUI
 import UIKit
 
 @available (iOS 16.0, *)
-public struct QRCodeScannerView: UIViewControllerRepresentable {
+public struct  ScannerView: UIViewControllerRepresentable {
     // The handler that will be called with the scanned code
     public var codeHandler: (String) -> Void
     
-    // Opacity of the overlay
-    public var opacity: Double
-    
-    // Height of the frame
-    public var frameHeight: CGFloat
-    
-    public init(opacity: Double = 0.5, frameHeight: CGFloat = 250, codeHandler: @escaping (String) -> Void) {
-        self.opacity = opacity
-        self.frameHeight = frameHeight
+    public init(codeHandler: @escaping (String) -> Void) {
         self.codeHandler = codeHandler
     }
     
@@ -136,6 +128,59 @@ public struct QRScannerViewBorderDisplay: View {
                 .frame(width: 100, height: 10)
             }
             .frame(width: 250, height: 250)
+        }
+    }
+}
+
+@available (iOS 16.0, *)
+public struct QRScannerView: View {
+    // Opacity of the overlay
+    public var opacity: Double
+    // Height of the frame
+    public var frameHeight: CGFloat
+    public var frameWidth: CGFloat
+    
+    public init(opacity: Double = 0.5, frameHeight: CGFloat = 250, frameWidth: CGFloat = 250) {
+        self.opacity = opacity
+        self.frameHeight = frameHeight
+        self.frameWidth = frameWidth
+    }
+    
+    public var body: some View {
+        ZStack {
+            // Full-screen camera view
+            ScannerView(){ url in
+                print("url found ", url)
+
+            }
+                .edgesIgnoringSafeArea(.all)
+
+            // Transparent black overlay
+            Color.black.opacity(0.5)
+                .edgesIgnoringSafeArea(.all)
+
+            // Square portion to act as camera
+            RoundedRectangle(cornerRadius: 16)
+                .frame(width: 250, height: 250)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 16)
+                        .fill(Color.black.opacity(0.8))
+                        .frame(width: 250, height: 250)
+                )
+                .blendMode(.destinationOut)
+                .border(.white,width: 10)
+                .cornerRadius(12)
+
+            QRScannerViewBorderDisplay()
+                .blendMode(.destinationOut)
+
+            Capsule()
+
+                .background(.white)
+                .frame(width: 200,height: 10)
+                .blendMode(.lighten)
+                .cornerRadius(20)
+
         }
     }
 }

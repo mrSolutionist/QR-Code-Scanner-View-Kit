@@ -1,4 +1,4 @@
-# QRScannerViewKit for SwiftUI above version 16
+# QRScannerViewKit for SwiftUI 
 
 QRScannerViewKit is a Swift package that provides a customisable QR code scanner view for iOS apps. 
 It includes a full-screen camera view with a transparent black overlay and a square portion that acts as the camera. 

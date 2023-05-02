@@ -18,8 +18,9 @@ public struct QRScannerView: View {
     public var borderColor : Color
     
     public var borderHeight: CGFloat
+    public var mainBorderColor: Color
     
-    public init(borderHeight:CGFloat = 100, borderColor: Color = .black,borderWidth:CGFloat = 10, opacity: Double = 0.5, frameHeight: CGFloat = 250, frameWidth: CGFloat = 250,codeHandler: @escaping (String) -> Void) {
+    public init(mainBorderColor: Color = .white ,borderHeight:CGFloat = 100, borderColor: Color = .black,borderWidth:CGFloat = 10, opacity: Double = 0.5, frameHeight: CGFloat = 250, frameWidth: CGFloat = 250,codeHandler: @escaping (String) -> Void) {
         self.opacity = opacity
         self.frameHeight = frameHeight
         self.frameWidth = frameWidth
@@ -27,6 +28,7 @@ public struct QRScannerView: View {
         self.borderWidth = borderWidth
         self.borderColor = borderColor
         self.borderHeight = borderHeight
+        self.mainBorderColor = mainBorderColor
     }
     // The handler that will be called with the scanned code
     public var codeHandler: (String) -> Void
@@ -55,7 +57,7 @@ public struct QRScannerView: View {
                             .frame(width: frameWidth, height: frameHeight)
                     )
                     .blendMode(.destinationOut)
-                    .border(.white,width: 10)
+                    .border(mainBorderColor,width: borderWidth)
                     .cornerRadius(12)
                 
                 QRScannerViewBorderDisplay(borderColor: borderColor, borderWidth: borderWidth, frameHeight: frameHeight, frameWidth: frameWidth, borderHeight: borderHeight)
@@ -64,7 +66,7 @@ public struct QRScannerView: View {
                 
                 Capsule()
                 
-                    .background(.white)
+                    .background(mainBorderColor)
                     .frame(width: 200,height: 10)
                     .blendMode(.lighten)
                     .cornerRadius(20)

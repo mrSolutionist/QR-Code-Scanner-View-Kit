@@ -53,7 +53,8 @@ public struct QRScannerView: View {
                     .frame(width: frameWidth, height: frameHeight)
                     .overlay(
                         RoundedRectangle(cornerRadius: 16)
-                            .fill(Color.black.opacity(0.8))
+//                            .fill(Color.black.opacity(0.8))
+                            .fill(.clear)
                             .frame(width: frameWidth, height: frameHeight)
                     )
                     .blendMode(.destinationOut)

@@ -140,17 +140,21 @@ public struct QRScannerView: View {
     public var frameHeight: CGFloat
     public var frameWidth: CGFloat
     
-    public init(opacity: Double = 0.5, frameHeight: CGFloat = 250, frameWidth: CGFloat = 250) {
+    public init(opacity: Double = 0.5, frameHeight: CGFloat = 250, frameWidth: CGFloat = 250,codeHandler: @escaping (String) -> Void) {
         self.opacity = opacity
         self.frameHeight = frameHeight
         self.frameWidth = frameWidth
+        self.codeHandler = codeHandler
     }
+    // The handler that will be called with the scanned code
+    public var codeHandler: (String) -> Void
     
     public var body: some View {
         ZStack {
             // Full-screen camera view
             ScannerView(){ url in
-                print("url found ", url)
+                
+               codeHandler(url)
 
             }
                 .edgesIgnoringSafeArea(.all)
@@ -184,3 +188,5 @@ public struct QRScannerView: View {
         }
     }
 }
+
+

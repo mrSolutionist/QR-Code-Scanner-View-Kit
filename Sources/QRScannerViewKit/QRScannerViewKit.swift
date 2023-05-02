@@ -34,7 +34,7 @@ public struct QRScannerView: View {
                     }label: {
                         Image(systemName: "xmark.square.fill")
                             .font(.title)
-                            .foregroundColor(Color.white)
+                            .foregroundColor(Color.black)
                     }
                     
                 }

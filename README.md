@@ -46,9 +46,9 @@ QRScannerView(codeHandler: { code in
     // Handle the scanned code here
 })
 ```
-The opacity, frameHeight, frameWidth, borderColor, borderWidth, borderHeight  parameters are optional, and control the opacity of the overlay, and the height and width of the camera frame. The codeHandler parameter is required, and should be a closure that takes a String parameter, which will contain the scanned QR code.
+The mainBorderColor, opacity, frameHeight, frameWidth, borderColor, borderWidth, borderHeight  parameters are optional, and control the opacity of the overlay, and the height and width of the camera frame. The codeHandler parameter is required, and should be a closure that takes a String parameter, which will contain the scanned QR code.
 
-The default values are opacity: 0.5, frameHeight: 250, frameWidth: 250, borderColor: .black, borderWidth: 5,borderHeight: 100.
+The default values are mainBorderColor : .white ,opacity: 0.5, frameHeight: 250, frameWidth: 250, borderColor: .black, borderWidth: 5,borderHeight: 100.
 
 #Example
 Here's an example of how you can use the QRScannerView in your SwiftUI view:

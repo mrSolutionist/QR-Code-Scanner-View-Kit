@@ -80,3 +80,7 @@ struct ContentView: View {
 # Support
 
 If you have any questions or issues with the QRScannerView package, you can contact me by opening an issue on the package repository: https://github.com/mrSolutionist/QRScannerViewKit .
+
+
+![alt text](https://github.com/mrSolutionist/QRScannerViewKit/blob/main/IMG_6013.HEIC)
+

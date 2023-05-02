@@ -21,16 +21,31 @@ public struct QRScannerView: View {
     }
     // The handler that will be called with the scanned code
     public var codeHandler: (String) -> Void
-    
+    @Environment(\.dismiss) var dismiss
     public var body: some View {
         ZStack {
             // Full-screen camera view
-            ScannerView(){ url in
-                
-               codeHandler(url)
+            VStack {
+               
+                HStack{
+                    Spacer()
+                    Button{
+                        dismiss()
+                    }label: {
+                        Image(systemName: "xmark.square.fill")
+                            .font(.title)
+                            .foregroundColor(Color.white)
+                    }
+                    
+                }
+                .padding()
+                ScannerView(){ url in
+                    
+                   codeHandler(url)
 
-            }
+                }
                 .edgesIgnoringSafeArea(.all)
+            }
 
             // Transparent black overlay
             Color.black.opacity(0.5)
@@ -97,3 +112,15 @@ public struct QRScannerViewBorderDisplay: View {
         }
     }
 }
+
+@available (iOS 16.0, *)
+struct QRScannerView_Previews: PreviewProvider {
+    static var previews: some View {
+        VStack {
+            QRScannerView(codeHandler: { (code: String) -> Void in
+                print("Scanned code: \(code)")
+            })
+        }
+    }
+}
+

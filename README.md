@@ -65,7 +65,7 @@ struct ContentView: View {
                 isPresentingScanner = true
             }
         }
-        .sheet(isPresented: $isPresentingScanner) {
+        .fullScreenCover(isPresented: $isPresentingScanner) {
             QRScannerView { code in
                 scannedCode = code
                 isPresentingScanner = false

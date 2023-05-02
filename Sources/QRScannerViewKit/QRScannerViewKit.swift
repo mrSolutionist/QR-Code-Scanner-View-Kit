@@ -61,6 +61,7 @@ public struct QRScannerView: View {
                     .cornerRadius(12)
                 
                 QRScannerViewBorderDisplay(borderColor: borderColor, borderWidth: borderWidth, frameHeight: frameHeight, frameWidth: frameWidth, borderHeight: borderHeight)
+                    .blendMode(.screen)
 
                     
                 

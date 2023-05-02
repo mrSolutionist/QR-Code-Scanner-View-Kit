@@ -56,7 +56,7 @@ public struct QRScannerView: View {
                             .fill(Color.black.opacity(0.8))
                            .frame(width: frameWidth, height: frameHeight)
                     )
-//                    .blendMode(.destinationOut)
+                    .blendMode(.screen)
                     .border(mainBorderColor,width: borderWidth)
                     .cornerRadius(12)
                 

@@ -20,7 +20,7 @@ public struct QRScannerView: View {
     public var borderHeight: CGFloat
     public var mainBorderColor: Color
     
-    public init(mainBorderColor: Color = .white ,borderHeight:CGFloat = 100, borderColor: Color = .black,borderWidth:CGFloat = 10, opacity: Double = 0.5, frameHeight: CGFloat = 250, frameWidth: CGFloat = 250,codeHandler: @escaping (String) -> Void) {
+    public init(mainBorderColor: Color = .white ,borderHeight:CGFloat = 100, borderColor: Color = .black,borderWidth:CGFloat = 10, opacity: Double = 0.8, frameHeight: CGFloat = 250, frameWidth: CGFloat = 250,codeHandler: @escaping (String) -> Void) {
         self.opacity = opacity
         self.frameHeight = frameHeight
         self.frameWidth = frameWidth
@@ -53,7 +53,8 @@ public struct QRScannerView: View {
                     .frame(width: frameWidth, height: frameHeight)
                     .overlay(
                         RoundedRectangle(cornerRadius: 16)
-                            .fill(Color.black.opacity(0.8))
+//                            .fill(Color.black.opacity(0.8))
+                            .fill(Color.clear)
                             .frame(width: frameWidth, height: frameHeight)
                     )
                     .blendMode(.destinationOut)

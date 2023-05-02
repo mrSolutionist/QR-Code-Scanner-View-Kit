@@ -23,56 +23,60 @@ public struct QRScannerView: View {
     public var codeHandler: (String) -> Void
     @Environment(\.dismiss) var dismiss
     public var body: some View {
-        ZStack {
-            // Full-screen camera view
-            VStack {
-               
-                HStack{
-                    Spacer()
-                    Button{
-                        dismiss()
-                    }label: {
-                        Image(systemName: "xmark.square.fill")
-                            .font(.title)
-                            .foregroundColor(Color.black)
-                    }
-                    
-                }
-                .padding()
+        ZStack(alignment:.top) {
+            ZStack {
+                // Full-screen camera view
                 ScannerView(){ url in
                     
-                   codeHandler(url)
-
+                    codeHandler(url)
+                    
                 }
                 .edgesIgnoringSafeArea(.all)
+                
+                // Transparent black overlay
+                Color.black.opacity(0.5)
+                    .edgesIgnoringSafeArea(.all)
+                
+                // Square portion to act as camera
+                RoundedRectangle(cornerRadius: 16)
+                    .frame(width: 250, height: 250)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 16)
+                            .fill(Color.black.opacity(0.8))
+                            .frame(width: 250, height: 250)
+                    )
+                    .blendMode(.destinationOut)
+                    .border(.white,width: 10)
+                    .cornerRadius(12)
+                
+                QRScannerViewBorderDisplay()
+                    .blendMode(.destinationOut)
+                
+                Capsule()
+                
+                    .background(.white)
+                    .frame(width: 200,height: 10)
+                    .blendMode(.lighten)
+                    .cornerRadius(20)
+                
+                
+             
             }
-
-            // Transparent black overlay
-            Color.black.opacity(0.5)
-                .edgesIgnoringSafeArea(.all)
-
-            // Square portion to act as camera
-            RoundedRectangle(cornerRadius: 16)
-                .frame(width: 250, height: 250)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 16)
-                        .fill(Color.black.opacity(0.8))
-                        .frame(width: 250, height: 250)
-                )
-                .blendMode(.destinationOut)
-                .border(.white,width: 10)
-                .cornerRadius(12)
-
-            QRScannerViewBorderDisplay()
-                .blendMode(.destinationOut)
-
-            Capsule()
-
-                .background(.white)
-                .frame(width: 200,height: 10)
-                .blendMode(.lighten)
-                .cornerRadius(20)
-
+            
+            HStack{
+                Spacer()
+                Button{
+                    print("pressed")
+                    dismiss()
+                }label: {
+                    Image(systemName: "xmark.square.fill")
+                        .font(.title)
+                        .foregroundColor(Color.white)
+                        .blendMode(.lighten)
+                }
+                
+            }
+            .padding()
         }
     }
 }

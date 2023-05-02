@@ -25,7 +25,7 @@ Click on Next again, and select the target where you want to add the package.
 Click on Finish.
 
 
-#Usage
+# Usage
 To use the QRScannerView in your SwiftUI view, follow these steps:
 
 Import the QRScannerViewKit package at the top of your file:
@@ -50,7 +50,8 @@ The mainBorderColor, opacity, frameHeight, frameWidth, borderColor, borderWidth,
 
 The default values are mainBorderColor : .white ,opacity: 0.5, frameHeight: 250, frameWidth: 250, borderColor: .black, borderWidth: 5,borderHeight: 100.
 
-#Example
+# Example
+
 Here's an example of how you can use the QRScannerView in your SwiftUI view:
 
 ```
@@ -65,7 +66,7 @@ struct ContentView: View {
                 isPresentingScanner = true
             }
         }
-        .sheet(isPresented: $isPresentingScanner) {
+        .fullScreenCover(isPresented: $isPresentingScanner) {
             QRScannerView { code in
                 scannedCode = code
                 isPresentingScanner = false
@@ -76,5 +77,6 @@ struct ContentView: View {
 
 ```
 
-#Support
+# Support
+
 If you have any questions or issues with the QRScannerView package, you can contact me by opening an issue on the package repository: https://github.com/mrSolutionist/QRScannerViewKit .

@@ -11,7 +11,7 @@ by Robin Geroge
 iOS Developer 
 
 
-# QRScannerViewKit Package Documentation
+# Package Documentation
 The QRScannerViewKit package provides a SwiftUI view that can be used to scan QR codes using the device's camera. It creates a full-screen camera view with a square portion that acts as the camera, and scans for QR codes within that square. When a code is detected, a handler function that you provide is called with the scanned code as a parameter.
 
 # Installation

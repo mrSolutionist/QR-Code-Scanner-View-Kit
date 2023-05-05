@@ -16,14 +16,18 @@ import UIKit
 public struct  ScannerView: UIViewControllerRepresentable {
     // The handler that will be called with the scanned code
     public var codeHandler: (String) -> Void
+    // scanner type can be changed to use the scanner for wide range of QR and Barcode
+    public var scannerType: AVMetadataObject.ObjectType
     
-    public init(codeHandler: @escaping (String) -> Void) {
+    public init(scannerType: AVMetadataObject.ObjectType, codeHandler: @escaping (String) -> Void) {
         self.codeHandler = codeHandler
+        self.scannerType = scannerType
     }
     
     public func makeUIViewController(context: Context) -> ScannerViewController {
         let viewController = ScannerViewController()
         viewController.codeHandler = codeHandler
+        viewController.metadataObjectType = scannerType
         return viewController
     }
     
@@ -36,6 +40,9 @@ public class ScannerViewController: UIViewController, AVCaptureMetadataOutputObj
     public var codeHandler: (String) -> Void = { _ in }
     public var captureSession: AVCaptureSession!
     public var previewLayer: AVCaptureVideoPreviewLayer!
+    public var metadataObjectType: AVMetadataObject.ObjectType?
+    
+   
     
     public override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,7 +71,7 @@ public class ScannerViewController: UIViewController, AVCaptureMetadataOutputObj
             captureSession.addOutput(metadataOutput)
             
             metadataOutput.setMetadataObjectsDelegate(self, queue: DispatchQueue.main)
-            metadataOutput.metadataObjectTypes = [.qr]
+            metadataOutput.metadataObjectTypes = [metadataObjectType!]
         } else {
             failed()
             return

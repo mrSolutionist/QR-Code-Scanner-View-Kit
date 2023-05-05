@@ -20,7 +20,7 @@ public struct QRScannerView: View {
     public var borderHeight: CGFloat
     public var mainBorderColor: Color
     
-    public init(mainBorderColor: Color = .white ,borderHeight:CGFloat = 100, borderColor: Color = .black,borderWidth:CGFloat = 10, opacity: Double = 0.8, frameHeight: CGFloat = 250, frameWidth: CGFloat = 250,codeHandler: @escaping (String) -> Void) {
+    public init(scannerType : AVMetadataObject.ObjectType = .qr ,mainBorderColor: Color = .white ,borderHeight:CGFloat = 100, borderColor: Color = .black,borderWidth:CGFloat = 10, opacity: Double = 0.8, frameHeight: CGFloat = 250, frameWidth: CGFloat = 250,codeHandler: @escaping (String) -> Void) {
         self.opacity = opacity
         self.frameHeight = frameHeight
         self.frameWidth = frameWidth
@@ -29,15 +29,20 @@ public struct QRScannerView: View {
         self.borderColor = borderColor
         self.borderHeight = borderHeight
         self.mainBorderColor = mainBorderColor
+        self.scannerType = scannerType
     }
     // The handler that will be called with the scanned code
     public var codeHandler: (String) -> Void
+    // scanner type can be changed to use the scanner for wide range of QR and Barcode
+    // set to QR by default
+    public var scannerType: AVMetadataObject.ObjectType
+    
     @Environment(\.dismiss) var dismiss
     public var body: some View {
         ZStack(alignment:.top) {
             ZStack {
                 // Full-screen camera view
-                ScannerView(){ url in
+                ScannerView(scannerType: scannerType){ url in
                     
                     codeHandler(url)
                     

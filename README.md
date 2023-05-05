@@ -1,6 +1,7 @@
 # QRScannerViewKit for SwiftUI 
 
 QRScannerViewKit is a Swift package that provides a customisable QR code scanner view for iOS apps. 
+It supports all type of QRScanner and Barcode scans.
 It includes a full-screen camera view with a transparent black overlay and a square portion that acts as the camera. 
 The scanner view also features a border display mark and a capsule-shaped highlight to enhance the user experience. 
 The package is built using the AVFoundation framework and is fully customisable to fit your app's design. 
@@ -46,9 +47,9 @@ QRScannerView(codeHandler: { code in
     // Handle the scanned code here
 })
 ```
-The mainBorderColor, opacity, frameHeight, frameWidth, borderColor, borderWidth, borderHeight  parameters are optional, and control the opacity of the overlay, and the height and width of the camera frame. The codeHandler parameter is required, and should be a closure that takes a String parameter, which will contain the scanned QR code.
+The scannerType, mainBorderColor, opacity, frameHeight, frameWidth, borderColor, borderWidth, borderHeight  parameters are optional, and control the opacity of the overlay, and the height and width of the camera frame. The codeHandler parameter is required, and should be a closure that takes a String parameter, which will contain the scanned QR code.
 
-The default values are mainBorderColor : .white ,opacity: 0.5, frameHeight: 250, frameWidth: 250, borderColor: .black, borderWidth: 5,borderHeight: 100.
+The default values are scannerType: qr , mainBorderColor : .white ,opacity: 0.5, frameHeight: 250, frameWidth: 250, borderColor: .black, borderWidth: 5,borderHeight: 100.
 
 # Example
 

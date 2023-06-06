@@ -5,7 +5,7 @@ import UIKit
 
 
 
-@available (iOS 16.0, *)
+@available (iOS 15.0, *)
 public struct QRScannerView: View {
     // Opacity of the overlay
     public var opacity: Double
@@ -100,7 +100,7 @@ public struct QRScannerView: View {
 }
 
 
-@available (iOS 16.0, *)
+@available (iOS 15.0, *)
 public struct QRScannerViewBorderDisplay: View {
     public var borderWidth: CGFloat
     public var borderHeight: CGFloat

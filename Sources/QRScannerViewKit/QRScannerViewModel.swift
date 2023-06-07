@@ -12,7 +12,7 @@ import UIKit
 
 
 
-@available (iOS 15.0, *)
+@available (iOS 16.0, *)
 public struct  ScannerView: UIViewControllerRepresentable {
     // The handler that will be called with the scanned code
     public var codeHandler: (String) -> Void
@@ -35,7 +35,7 @@ public struct  ScannerView: UIViewControllerRepresentable {
     }
 }
 
-@available (iOS 15.0, *)
+@available (iOS 16.0, *)
 public class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate, ObservableObject {
     public var codeHandler: (String) -> Void = { _ in }
     public var captureSession: AVCaptureSession!
